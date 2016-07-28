@@ -2,25 +2,16 @@
 <html>
   <head>
     <title>Display Google Map</title>
-    <link rel="stylesheet" href="http://openlayers.org/en/v3.17.1/css/ol.css" type="text/css">
+
 <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="http://openlayers.org/en/v3.17.1/build/ol.js"></script>
-<style>
-h1 h2 h3 h4 h5 {
-font-size: 80%;
-color: gray;
-}
-a href{
-color:orange;
-}
-</style>
+
   </head>
   <body>
 <div>
 <h1>Display Google Map</h1>
 </div>
  <div id="map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing&callback=initMap"</script>
+
     <script>
       // This example requires the Drawing library. Include the libraries=drawing
       // parameter when you first load the API. For example:
