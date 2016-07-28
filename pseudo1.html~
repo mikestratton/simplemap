@@ -11,9 +11,7 @@
   <body>
 
  <div id="map">
-<div id="top">
-<h1>Google Map with Writable GIS Geometry Layer</h1>
-</div>
+
 </div>
 
     <script>
