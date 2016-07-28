@@ -15,15 +15,17 @@ color:orange;
 }
 </style>
   </head>
-  <body style="margin:2% 10%;">
+  <body>
 <div>
 <h1>Display Google Map</h1>
-
+</div>
  <div id="map"></div>
+
     <script>
       // This example requires the Drawing library. Include the libraries=drawing
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=&libraries=drawing">
+
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -54,6 +56,6 @@ color:orange;
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing&callback=initMap"
          async defer></script>
 
-</div>
+
   </body>
 </html>	
