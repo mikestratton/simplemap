@@ -9,10 +9,12 @@
 
   </head>
   <body>
+
+ <div id="map">
 <div id="top">
 <h1>Google Map with Writable GIS Geometry Layer</h1>
 </div>
- <div id="map"></div>
+</div>
 
     <script>
       // This example requires the Drawing library. Include the libraries=drawing
@@ -22,7 +24,7 @@
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -81.397, lng: 41.644},
+          center: {lat: 41.000, lng: -81.000},
           zoom: 8
         });
 
