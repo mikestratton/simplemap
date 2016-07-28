@@ -3,17 +3,21 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
-
-#map {
-	height: 100%;
-}
 body {
 	background-color:AntiqueWhite;
 }
 
+#map {
+	height: 100%;
+}
+
+#top {
+	text-align: center;
+}
+
 h1, h2, h3, h4, h5 {
 	color: CornflowerBlue;
-	padding: 10px;
+	padding: 10px 20px;
 }
 
 a {

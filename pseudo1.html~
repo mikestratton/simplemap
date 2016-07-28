@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Display Google Map</title>
+    <title>TSSP Simple Map </title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
 
 <link rel="stylesheet" href="style.css" type="text/css">
 
   </head>
   <body>
-<div>
-<h1>Display Google Map</h1>
+<div id="top">
+<h1>Google Map with GIS Geometry Editable Layer</h1>
 </div>
  <div id="map"></div>
 

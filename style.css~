@@ -1,22 +1,27 @@
- html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 body {
-background-color:AntiqueWhite;
-}
-h1, h2, h3, h4, h5 {
-color: CornflowerBlue;
-padding: 10px;
-}
-a {
-color:OrangeRed;
+	background-color:AntiqueWhite;
 }
 
- <style>
+#map {
+	height: 100%;
+}
+
+#
+
+h1, h2, h3, h4, h5 {
+	color: CornflowerBlue;
+	padding: 10px 20px;
+}
+
+a {
+	color:OrangeRed;
+}
+
+
      
-    </style>
+   
