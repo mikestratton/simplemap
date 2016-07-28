@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Display Google Map</title>
+    <link rel="stylesheet" href="http://openlayers.org/en/v3.17.1/css/ol.css" type="text/css">
+<link rel="stylesheet" href="style.css" type="text/css">
+    <script src="http://openlayers.org/en/v3.17.1/build/ol.js"></script>
+<style>
+h1 h2 h3 h4 h5 {
+font-size: 80%;
+color: gray;
+}
+a href{
+color:orange;
+}
+</style>
+  </head>
+  <body style="margin:2% 10%;">
+<div>
+<h1>Display Google Map</h1>
+
+</div>
+  </body>
+</html>	

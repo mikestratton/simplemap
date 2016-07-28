@@ -1,0 +1,10 @@
+body {
+margin:2% 10%;
+background-color:AntiqueWhite;
+}
+h1, h2, h3, h4, h5 {
+color: CornflowerBlue;
+}
+a {
+color:chocolate;
+}
