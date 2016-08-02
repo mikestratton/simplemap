@@ -16,7 +16,7 @@
 *NOTE: map will only work on domains defined in Google API</span></li>
 <li class="complete"><a href="layer-data-dragndrop.html">Version 0.02</a> drag and drop a valid geojson file</span><br />
 *NOTE: map will only work on domains defined in Google API</li>
-<li><a href="v0.03">Version 0.03</a> combine edit and geojson combined into one file</li>
+<li><a href="v0.03.html">Version 0.03</a> combine edit and geojson combined into one file</li>
 <li>Use google maps as base layer. Draw/Edit feature is second layer.</li>
 <li>Changes to layer will be stored as GeoJSON and/or KML
 OpenLayers: http://openlayers.org/en/v3.5.0/apidoc/ol.format.GeoJSON.html#writeFeature
