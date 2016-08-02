@@ -1,65 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TSSP Simple Map</title>
-    <link rel="stylesheet" href="http://openlayers.org/en/v3.17.1/css/ol.css" type="text/css">
+    <title>TSSP Simple Map Software Versioning</title>
+    
    <link rel="stylesheet" href="style.css" type="text/css">
-    <script src="http://openlayers.org/en/v3.17.1/build/ol.js"></script>
+    <meta http-equiv="refresh" content="5; url=index.html">
 </head>
   <body>
-<div>
-<h1>Versioning, Updates & Requirements</h1>
-
-<ol>
-<li class="complete"><a href="pseudo1.html">Version 0.01 edit a map.</a>
-OpenLayers: http://openlayers.org/en/latest/examples/draw-and-modify-features.html
-Google Maps API: https://developers.google.com/maps/documentation/javascript/examples/drawing-tools<br />
-map will only work on domains defined in Google API</li>
-<li>Version 0.02 drag and drop a valid geojson file
-OpenLayers: http://openlayers.org/en/latest/examples/drag-and-drop-image-vector.html
-Google Maps: https://developers.google.com/maps/documentation/javascript/examples/layer-data-dragndrop</li>
-<li>Version 0.03 combine edit and geojson combined into one file
-<li>Use google maps as base layer. Draw/Edit feature is second layer.</li>
-<li>Changes to layer will be stored as GeoJSON and/or KML
-OpenLayers: http://openlayers.org/en/v3.5.0/apidoc/ol.format.GeoJSON.html#writeFeature
-Google Maps: https://developers.google.com/maps/documentation/javascript/datalayer</li>
-<li>User saves map, VALID geojson will be uploaded and saved to MySQL or postgreSQL.</li>
-<li>Table in database will have unique id</li>
-<li>ID in table will return to browser as a url.</li>
-<li>When user clicks url, a google map with the geojson data will open up</li>
-<li>Git versioning will be used for development.</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ol>
-1. edit a map.
-OpenLayers: http://openlayers.org/en/latest/examples/draw-and-modify-features.html
-Google Maps API: https://developers.google.com/maps/documentation/javascript/examples/drawing-tools
-
-2. drag and drop a valid geojson file:
-OpenLayers: http://openlayers.org/en/latest/examples/drag-and-drop-image-vector.html
-Google Maps: https://developers.google.com/maps/documentation/javascript/examples/layer-data-dragndrop
-
-3. Use google maps as base layer. Draw/Edit feature is second layer.
-
-4. Changes to layer will be stored as GeoJSON and/or KML
-OpenLayers: http://openlayers.org/en/v3.5.0/apidoc/ol.format.GeoJSON.html#writeFeature
-Google Maps: https://developers.google.com/maps/documentation/javascript/datalayer
-
-5. User saves map, VALID geojson will be uploaded and saved to MySQL or postgreSQL. 
-
-6. Table in database will have unique id
-
-7. ID in table will return to browser as a url.
-
-8. When user clicks url, a google map with the geojson data will open up.
-
-9. Git versioning will be used for development.
-
-<p>References: <br />
-https://developers.google.com/maps/documentation/javascript/examples/drawing-tools <br />
-</p>
+<div><h1>This page has moved to <a href="index.html">index.html</a></h1>
+<p>Please go to <a href="index.html">index.html</a></p>
 </div>
   </body>
 </html>	
