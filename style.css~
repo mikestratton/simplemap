@@ -5,16 +5,22 @@ html, body {
 }
 body {
 	background-color:AntiqueWhite;
+	margin:20px;
 }
 
 #map {
 	height: 100%;
 }
 
-#
+#top {
+	text-align: center;
+}
 
 h1, h2, h3, h4, h5 {
 	color: CornflowerBlue;
+	padding: 10px 20px;
+}
+p {
 	padding: 10px 20px;
 }
 
