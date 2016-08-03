@@ -12,16 +12,13 @@
 <p class="list_title"><strong>Software Versioning</strong><br />
 <em>*Items in grey have been completed</em></p>
 <ol>
-<li><a href="pseudo1.html">Version 0.01 </a><span  class="complete">edit a map.<br />
-*NOTE: map will only work on domains defined in Google API</span><br /><br /></li>
+<li><a href="pseudo1.html">Version 0.01 </a><span  class="complete">edit a map.</span><br /><br /></li>
 
-<li><a href="layer-data-dragndrop.html">Version 0.02</a> <span  class="complete">drag and drop a valid geojson file<br />
-*NOTE: map will only work on domains defined in Google API</span><br /><br /></li>
+<li><a href="layer-data-dragndrop.html">Version 0.02</a> <span  class="complete">drag and drop a valid geojson file</span><br /><br /></li>
 
 <li><a href="v0.03.html">Version 0.03</a> <span class="complete">combine edit and geojson combined into one file</span><br /><br /></li>
 
-<li>Changes to layer will be stored as GeoJSON and/or KML<br />
-OpenLayers: http://openlayers.org/en/v3.5.0/apidoc/ol.format.GeoJSON.html#writeFeature<br />
+<li><a href="v0.04.html">Version 0.04</a>Changes to layer will be stored as GeoJSON and/or KML<br />
 Google Maps: https://developers.google.com/maps/documentation/javascript/datalayer<br /><br /></li>
 
 <li>User saves map, VALID geojson will be uploaded and saved to MySQL or postgreSQL.<br /><br /></li>
