@@ -87,6 +87,7 @@ ol, ul {
 
 .complete {
     color:grey;
+    text-decoration: line-through;
 }
 
 .list_title{
