@@ -143,16 +143,23 @@
                  </div>
                 <hr>
                 <div id="geojson-controls">
+					<!-- 
 					<button onclick="document.getElementById('geojson-input').select();">Select All</button>
 					<a id="download-link" href="data:;base64," download="geojson.json">
 					<button>Download</button>
 					</a>
-					<button>Save Map</button>
+					<button>Save GeoJson</button>
+					-->
 					
 					
 					
+					<form action="geo_form.php" method="POST" id="geoform">
+					<input type="submit" name="submit" value="Save GeoJSON">
+					</form>
+
+	
 				</div>
-                <textarea id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
+                <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
             </div>
         </div>
 

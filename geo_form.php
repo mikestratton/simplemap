@@ -1,6 +1,6 @@
 <?php
-if(isset($_POST['field1'])) {
-    $data = $_POST['field1'] . "\n";
+if(isset($_POST['geofield1'])) {
+    $data = $_POST['geofield1'] . "\n";
     $ret = file_put_contents('maps/geo_form.json', $data, FILE_APPEND | LOCK_EX);
     if($ret === false) {
         die('There was an error writing this file');
