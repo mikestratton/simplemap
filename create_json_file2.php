@@ -175,5 +175,5 @@ ob_start();
 echo '1';
 
 // Get the content that is in the buffer and put it in your file //
-file_put_contents('abc123.html', ob_get_contents());
+file_put_contents('maps/abc123.html', ob_get_contents());
 ?>
