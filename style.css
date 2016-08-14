@@ -46,7 +46,7 @@ a {
 ol, ul {
     margin-left: 15px;
 }
-#content {
+.content {
   height:100%;
   width: auto;
 }
