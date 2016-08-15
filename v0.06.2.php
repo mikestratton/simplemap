@@ -6,28 +6,25 @@
     <title>Drag and Drop GeoJSON with Drawing tools</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
-	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-	<script src="/js/bootstrap.min.js"></script>
-	
-  </head>
+</head>
   <body>
-	<div id="map"></div>
-				<div id="drop-container">
-					<div id="drop-silhouette"></div>
-				</div>
-	</div>
-      
+    <div id="map"></div>
+    <div id="drop-container"><div id="drop-silhouette"></div></div>
+    
       <script>
       /* Map functions */
       var map;
-
+	  
+	  /* User Input for Lat/Lon */
+	  var lat = "41";
+	  var lon = "81";
+	  
       function initMap() {
         // set up the map
         map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(41.000, -81.000),
-          zoom: 11
+          center: new google.maps.LatLng(<?php echo $_POST['lat'];?>, <?php echo $_POST['lon'];?>),
+          zoom: <?php echo $_POST['zoom'];?>,
+		  mapTypeId: google.maps.MapTypeId.SATELLITE,
         });
 		
 		var drawingManager = new google.maps.drawing.DrawingManager({
