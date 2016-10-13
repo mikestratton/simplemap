@@ -4,10 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0" />
     <title>Drag and Drop GeoJSON with Drawing tools</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
-	
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <style>
+     .position-form {
+        float: left;
+        text-align: right;
+        padding: 0 15px;
+      }
+    </style>
 </head>
   <body>
+    <form method="post" class="position-form">
+      <p>
+        <table border="0">
+          <tr>
+            <td>Latitude:</td>
+            <td><input type="text" name="lat" /></td>
+          </tr>
+          <tr>
+            <td>Longitude:</td>
+            <td><input type="text" name="lon" /></td>
+          </tr>
+          <tr>
+            <td>Zoom Level:</td>
+            <td><input type="text" name="zoom" /></td>
+          </tr>
+        </table>
+      </p>
+      <p><input type="submit" /></p>
+    </form>
+    <?php if (isset($_POST['lat'])) { ?>
     <div id="map"></div>
     <div id="drop-container"><div id="drop-silhouette"></div></div>
     
@@ -151,5 +177,6 @@
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing&callback=initialize"></script>
+    <?php } ?>
   </body>
 </html>
