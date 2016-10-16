@@ -5,36 +5,80 @@
     <meta name="viewport" content="initial-scale=1.0" />
     <title>Drag and Drop GeoJSON with Drawing tools</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-	
-</head>
+    <style>
+      .input-form {
+        position: fixed;
+        background: white;
+        z-index: 5000;
+        top: 0;
+        right: 0;
+      }
+    </style>
+  </head>
   <body>
+    <form class="input-form" id="input-form">
+    <p>
+    <table border="0">
+      <tr>
+        <td>Latitude:</td>
+        <td><input type="text" name="lat" id="lat-input" value="40.7116" /></td>
+      </tr>
+      <tr>
+        <td>Longitude:</td>
+        <td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td>
+      </tr>
+      <tr>
+        <td>Zoom Level:</td>
+        <td><input type="text" name="zoom" id="zoom-input" value="18" /></td>
+      </tr>
+    </table>
+    </p>
+    <p><input type="submit" /></p>
+    </form>
+
     <div id="map"></div>
     <div id="drop-container"><div id="drop-silhouette"></div></div>
-    
-      <script>
+
+    <script>
+      /* User input for lat/lon/zoom */
+      var lat = 40.7116,
+          lon = -74.0132,
+          zoom = 18;
+
+      document.getElementById('input-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        lat = parseFloat(document.getElementById('lat-input').value);
+        lon = parseFloat(document.getElementById('lon-input').value);
+        zoom = parseFloat(document.getElementById('zoom-input').value);
+        
+        var point = new google.maps.LatLng(lat, lon);
+        map.setCenter(point);
+        map.setZoom(zoom);
+
+        return true; // do not submit form
+      }, true);
+
+
       /* Map functions */
       var map;
-	  
-	  /* User Input for Lat/Lon */
-	  var lat = "41";
-	  var lon = "81";
-	  
+
       function initMap() {
         // set up the map
         map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(<?php echo $_POST['lat'];?>, <?php echo $_POST['lon'];?>),
-          zoom: <?php echo $_POST['zoom'];?>,
-		  mapTypeId: google.maps.MapTypeId.SATELLITE,
+          center: new google.maps.LatLng(lat, lon),
+          zoom: zoom,
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
         });
-		
-		var drawingManager = new google.maps.drawing.DrawingManager({
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['marker', 'polygon', 'polyline']
           },
-           circleOptions: {
+          circleOptions: {
             fillColor: '#ffff00',
             fillOpacity: 1,
             strokeWeight: 5,
@@ -83,7 +127,6 @@
           });
         }
       }
-
 
       /* DOM (drag/drop) functions */
 
