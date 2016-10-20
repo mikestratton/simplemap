@@ -1,3 +1,3 @@
-Copyright New Era Technologies, Inc. All rights reserved.
+Copyright may apply to this repository. 
 
-Patent pending.
+This repository contains a portion of software that has a pending patent with the United States Patent and Trademark Office. 
