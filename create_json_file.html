@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
+	<script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js"></script>
+  
+	<style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style>
     <style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:black;text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}</style>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style>
@@ -10,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple GeoJSON Editor</title>
-    <link href="styles.css" title="compact" rel="stylesheet" type="text/css">
+    <link href="style.css" title="compact" rel="stylesheet" type="text/css">
     <style type="text/css">
       html,
       body {
@@ -53,16 +57,6 @@
       }
       #drop-container.visible {
       display: block;
-      }
-      #drop-silhouette {
-      color: white;
-      border: white dashed 8px;
-      height: calc(100% - 56px);
-      width: calc(100% - 56px);
-      background-image: url('data:image/png;base64,');
-      background-repeat: no-repeat;
-      background-position: center;
-      margin: 20px;
       }
       /* Panel styles. */
       #panel {
@@ -111,24 +105,13 @@
       }
     </style>
 	   
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-    <script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/common.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/map.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/controls.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/drawing_impl.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/onion.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/stats.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/marker.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/25/12/data.js"></script>
   </head>
+
   <body>
+
     <div id="panel">
       <div id="panel-content">
-        <div id="panel-title">Simple GeoJSON Editor<br />
-        </div>
-        <hr>
+        <div id="panel-title">Simple GeoJSON Editor</div>
         <div id="geojson-controls">
           <button onclick="document.getElementById('geojson-input').select();">Select All</button>
           <a id="download-link" href="data:;base64," download="geojson.json">
@@ -142,314 +125,23 @@
       </div>
     </div>
     <div id="map-container">
-      <div id="map-holder" style="position: relative; overflow: hidden; background-color: rgb(229, 227, 223);">
-        <div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;">
-          <div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;">
-            <div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0); will-change: transform;">
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
-                <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                  <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
-                    <div style="width: 256px; height: 256px; position: absolute; left: 352px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 352px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 608px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 608px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 352px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 608px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 96px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 864px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 96px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 864px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 864px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 96px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: -160px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: -160px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: -160px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 1120px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 1120px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; position: absolute; left: 1120px; top: 484px;"></div>
-                  </div>
-                </div>
-              </div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;">
-                <div style="position: absolute; left: 0px; top: 0px; z-index: -1;">
-                  <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 352px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 352px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 608px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 608px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 352px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 608px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 96px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 864px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 96px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 864px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 864px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 96px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -160px; top: 484px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -160px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -160px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1120px; top: 228px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1120px; top: -28px;"></div>
-                    <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 1120px; top: 484px;"></div>
-                  </div>
-                </div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -98px; top: 214px; z-index: 254;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 121px; top: 178px; z-index: 218;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 117px; top: 240px; z-index: 280;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 41px; top: 262px; z-index: 302;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -2px; top: 195px; z-index: 235;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 193px; top: 177px; z-index: 217;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 98px; top: 181px; z-index: 221;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 124px; top: 176px; z-index: 216;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -73px; top: 240px; z-index: 280;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -98px; top: 135px; z-index: 175;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 89px; top: 172px; z-index: 212;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 176px; top: 190px; z-index: 230;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 176px; top: 190px; z-index: 230;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 176px; top: 190px; z-index: 230;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 142px; top: 192px; z-index: 232;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 157px; top: 203px; z-index: 243;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -99px; top: 211px; z-index: 251;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -77px; top: 238px; z-index: 278;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -99px; top: 135px; z-index: 175;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 159px; top: 203px; z-index: 243;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 176px; top: 190px; z-index: 230;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 142px; top: 192px; z-index: 232;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 157px; top: 203px; z-index: 243;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -99px; top: 211px; z-index: 251;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -77px; top: 238px; z-index: 278;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: -99px; top: 135px; z-index: 175;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 159px; top: 203px; z-index: 243;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1169px; top: 365px; z-index: 405;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1259px; top: 195px; z-index: 235;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1242px; top: 309px; z-index: 349;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1288px; top: 257px; z-index: 297;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1247px; top: 314px; z-index: 354;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1039px; top: 369px; z-index: 409;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1036px; top: 275px; z-index: 315;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1043px; top: 343px; z-index: 383;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1011px; top: 334px; z-index: 374;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1392px; top: 227px; z-index: 267;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1319px; top: 213px; z-index: 253;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1188px; top: 437px; z-index: 477;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1289px; top: 297px; z-index: 337;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1176px; top: 426px; z-index: 466;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 622px; top: 107px; z-index: 147;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 679px; top: 114px; z-index: 154;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 655px; top: 56px; z-index: 96;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 669px; top: 61px; z-index: 101;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 739px; top: 13px; z-index: 53;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 742px; top: -47px; z-index: -7;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 610px; top: 124px; z-index: 164;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 596px; top: 412px; z-index: 452;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 654px; top: 82px; z-index: 122;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 663px; top: 131px; z-index: 171;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 732px; top: 210px; z-index: 250;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 705px; top: 136px; z-index: 176;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 562px; top: 84px; z-index: 124;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 649px; top: 153px; z-index: 193;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 625px; top: 93px; z-index: 133;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 617px; top: 407px; z-index: 447;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 658px; top: 16px; z-index: 56;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 716px; top: 94px; z-index: 134;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 710px; top: 114px; z-index: 154;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 694px; top: 105px; z-index: 145;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 545px; top: 205px; z-index: 245;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 811px; top: 60px; z-index: 100;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 768px; top: 17px; z-index: 57;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 576px; top: 192px; z-index: 232;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 498px; top: 360px; z-index: 400;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 700px; top: 22px; z-index: 62;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 646px; top: 137px; z-index: 177;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 771px; top: 110px; z-index: 150;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 596px; top: 101px; z-index: 141;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 596px; top: 101px; z-index: 141;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 596px; top: 101px; z-index: 141;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 584px; top: 83px; z-index: 123;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 178px; top: 153px; z-index: 193;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 145px; top: 167px; z-index: 207;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 139px; top: 169px; z-index: 209;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 265px; top: 654px; z-index: 694;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 347px; top: 560px; z-index: 600;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 331px; top: 582px; z-index: 622;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 33px; top: 331px; z-index: 371;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 176px; top: 418px; z-index: 458;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 775px; top: 265px; z-index: 305;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 796px; top: 246px; z-index: 286;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 795px; top: 251px; z-index: 291;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 762px; top: 187px; z-index: 227;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 912px; top: 295px; z-index: 335;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 756px; top: 598px; z-index: 638;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 806px; top: 451px; z-index: 491;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 782px; top: 442px; z-index: 482;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1591px; top: 670px; z-index: 710;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; opacity: 1;"></div>
-                <div style="width: 22px; height: 40px; overflow: hidden; position: absolute; left: 1457px; top: 649px; z-index: 689;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 40px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-              </div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
-                <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
-                  <div style="position: absolute; left: 352px; top: 228px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i3!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=47622" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 352px; top: 484px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i3!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=83643" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 608px; top: 228px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i4!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=67365" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 608px; top: 484px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i4!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=103386" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 352px; top: -28px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i3!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=11601" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 608px; top: -28px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i4!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=31344" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 96px; top: 228px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i2!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=27879" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 864px; top: 228px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i5!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=87108" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 96px; top: 484px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i2!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=63900" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 864px; top: 484px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i5!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=123129" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 864px; top: -28px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i5!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=51087" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 96px; top: -28px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i2!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=122929" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: -160px; top: 484px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i1!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=44157" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: -160px; top: 228px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i1!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=8136" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: -160px; top: -28px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i1!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=103186" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 1120px; top: 228px;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i6!3i3!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=106851" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 1120px; top: -28px;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i6!3i2!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=70830" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                  <div style="position: absolute; left: 1120px; top: 484px;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i3!2i6!3i4!4i256!2m3!1e0!2sm!3i359029125!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=11801" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="gm-style-pbc" style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%; transition-duration: 0.3s; opacity: 0; display: none;">
-              <p class="gm-style-pbt">Use two fingers to move the map</p>
-            </div>
-            <div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div>
-            <div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;">
-               
-                
-                
-                
-               
-              </div>
-              <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
-            </div>
-          </div>
-          <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;">
-            <a target="_blank" href="https://maps.google.com/maps?ll=23.32208,0&amp;z=3&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;">
-              <div style="width: 66px; height: 26px; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div>
-            </a>
-          </div>
-          <div style="padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 459px; top: 258px; background-color: white;">
-            <div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div>
-            <div style="font-size: 13px;">Map data ©2016 Google, INEGI</div>
-            <div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-          </div>
-          <div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 71px; bottom: 0px; width: 151px;">
-            <div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px;">
-              <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-                <div style="width: 1px;"></div>
-                <div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div>
-              </div>
-              <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="">Map data ©2016 Google, INEGI</span></div>
-            </div>
-          </div>
-          <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;">
-            <div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google, INEGI</div>
-          </div>
-          <div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; -webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;">
-            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-              <div style="width: 1px;"></div>
-              <div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div>
-            </div>
-            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div>
-          </div>
-          <div style="width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/sv5.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 112px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div>
-          <div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;">
-            <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
-              <div style="width: 1px;"></div>
-              <div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div>
-            </div>
-            <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@23.32208,0,3z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div>
-          </div>
-          <div class="gmnoprint" style="margin: 5px; z-index: 10; position: absolute; left: 114px; top: 0px;">
-            <div style="float: left; line-height: 0;">
-              <div draggable="false" title="Stop drawing" style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 4px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; font-weight: 500; background-color: rgb(255, 255, 255); background-clip: padding-box;">
-                <span style="display: inline-block;">
-                  <div style="width: 16px; height: 16px; overflow: hidden; position: relative;"><img src="https://maps.gstatic.com/mapfiles/drawing.png" draggable="false" style="position: absolute; left: 0px; top: -144px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 16px; height: 192px;"></div>
-                </span>
-              </div>
-            </div>
-            <div style="float: left; line-height: 0;">
-              <div draggable="false" title="Add a marker" style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 4px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; background-color: rgb(255, 255, 255); background-clip: padding-box;">
-                <span style="display: inline-block;">
-                  <div style="width: 16px; height: 16px; overflow: hidden; position: relative;"><img src="https://maps.gstatic.com/mapfiles/drawing.png" draggable="false" style="position: absolute; left: 0px; top: -176px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 16px; height: 192px;"></div>
-                </span>
-              </div>
-            </div>
-            <div style="float: left; line-height: 0;">
-              <div draggable="false" title="Draw a line" style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 4px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; background-color: rgb(255, 255, 255); background-clip: padding-box;">
-                <span style="display: inline-block;">
-                  <div style="width: 16px; height: 16px; overflow: hidden; position: relative;"><img src="https://maps.gstatic.com/mapfiles/drawing.png" draggable="false" style="position: absolute; left: 0px; top: -32px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 16px; height: 192px;"></div>
-                </span>
-              </div>
-            </div>
-            <div style="float: left; line-height: 0;">
-              <div draggable="false" title="Draw a shape" style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 4px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; background-color: rgb(255, 255, 255); background-clip: padding-box;">
-                <span style="display: inline-block;">
-                  <div style="width: 16px; height: 16px; overflow: hidden; position: relative;"><img src="https://maps.gstatic.com/mapfiles/drawing.png" draggable="false" style="position: absolute; left: 0px; top: -64px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 16px; height: 192px;"></div>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; -webkit-user-select: none; position: absolute; bottom: 107px; right: 28px;">
-            <div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;">
-              <div draggable="false" style="-webkit-user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; width: 28px; height: 55px; background-color: rgb(255, 255, 255);">
-                <div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;">
-                  <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div>
-                </div>
-                <div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; top: 0px; background-color: rgb(230, 230, 230);"></div>
-                <div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;">
-                  <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="gm-svpc" controlwidth="28" controlheight="28" style="box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255);">
-              <div style="position: absolute; left: 1px; top: 1px;"></div>
-              <div style="position: absolute; left: 1px; top: 1px;">
-                <div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-                <div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-              </div>
-            </div>
-            <div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;">
-              <div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; display: none; background-color: rgb(255, 255, 255);"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-              <div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
-            </div>
-          </div>
-          <div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;">
-            <div class="gm-style-mtc" style="float: left;">
-              <div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 22px; font-weight: 500; background-color: rgb(255, 255, 255); background-clip: padding-box;">Map</div>
-              <div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 29px; text-align: left; display: none; background-color: white;">
-                <div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);">
-                  <span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);">
-                    <div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div>
-                  </span>
-                  <label style="vertical-align: middle; cursor: pointer;">Terrain</label>
-                </div>
-              </div>
-            </div>
-            <div class="gm-style-mtc" style="float: left;">
-              <div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left-width: 0px; min-width: 40px; background-color: rgb(255, 255, 255); background-clip: padding-box;">Satellite</div>
-              <div style="z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 29px; text-align: left; display: none; background-color: white;">
-                <div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);">
-                  <span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);">
-                    <div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div>
-                  </span>
-                  <label style="vertical-align: middle; cursor: pointer;">Labels</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="drop-container" class="">
-        <div id="drop-silhouette"></div>
-      </div>
+      <div id="map-holder" style="position: relative; overflow: hidden; background-color: rgb(229, 227, 223);"></div>
+      <div id="drop-container" class=""></div>
     </div>
-  <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing&callback=initialize"></script>
+
+	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
+	<script type='text/javascript'>
+		jsonURL = 'maps/geo_form.json';
+        $(window).load(function() {
+			$.ajax({
+				url : jsonURL,
+				dataType: "text",
+				success : function () {
+					map.data.loadGeoJson(jsonURL);
+				}
+			});
+		});
+	</script>
+
  </body>
 </html>
