@@ -22,19 +22,6 @@
                 margin: 10px;
             }
 
-            #color-palette {
-                clear: both;
-            }
-
-            .color-button {
-                width: 14px;
-                height: 14px;
-                font-size: 0;
-                margin: 2px;
-                float: left;
-                cursor: pointer;
-            }
-
             #delete-button {
                 margin-top: 5px;
             }
@@ -68,14 +55,6 @@
                 }
             }
 
-            
-
-
-
-  
-
-    
-
             function initialize () {
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 16,
@@ -93,7 +72,11 @@
                 // Creates a drawing manager attached to the map that allows the user to draw
                 // markers, lines, and shapes.
                 drawingManager = new google.maps.drawing.DrawingManager({
-                    drawingMode: google.maps.drawing.OverlayType.POLYGON,
+                    drawingMode: google.maps.drawing.OverlayType.MARKER,
+					drawingControl: true,
+					drawingControlOptions: {						
+						drawingModes: ['marker', 'polygon', 'polyline']
+					},
                     markerOptions: {
                         draggable: true
                     },
@@ -101,8 +84,7 @@
                         editable: true,
                         draggable: true
                     },
-                    rectangleOptions: polyOptions,
-                    circleOptions: polyOptions,
+                    
                     polygonOptions: polyOptions,
                     map: map
                 });
