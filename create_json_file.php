@@ -8,7 +8,7 @@ $getGeo = file_get_contents('maps/geo_form.json');
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
 	<script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js"></script>
-  
+
 	<style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style>
     <style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:black;text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}</style>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -135,7 +135,11 @@ $getGeo = file_get_contents('maps/geo_form.json');
       <div id="drop-container" class=""></div>
     </div>
 
-
-
+    <script>
+        // Refresh map if geojson data exists
+        if (document.getElementById('geojson-input').value.length && typeof refreshDataFromGeoJson == 'function') {
+            refreshDataFromGeoJson();
+        }
+    </script>
  </body>
 </html>
