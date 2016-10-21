@@ -1,0 +1,65 @@
+ html { 
+	height: 100% 
+ }
+ 
+ body { 
+	 height: 100%; 
+	 margin: 0; 
+	 padding: 0; 
+	 overflow: hidden; 
+ }
+
+#map {
+    height: 100%;
+}
+
+#geojson { 
+  height: 300px;
+  width: 100%;
+  text-align: center;
+}
+
+#top {
+    text-align: center;
+}
+#drop-container {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    padding: 20px;
+    background-color: rgba(100, 100, 100, 0.5);
+}
+#drop-silhouette {
+    color: white;
+    border: white dashed 8px;
+    height: calc(100% - 56px);
+    width: calc(100% - 56px);
+    background-image: url('data:image/png;base64,');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.complete {
+    color:grey;
+    text-decoration: line-through;
+}
+
+.review {
+	color: red;
+	background: yellow;
+	font-style: underline overline;
+}
+.list_title{
+    padding: 0px 20px;
+    margin-bottom:-10px;
+
+}
+
+
+
+
+
