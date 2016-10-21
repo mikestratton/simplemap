@@ -78,14 +78,17 @@
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['marker', 'polygon', 'polyline']
           },
-          circleOptions: {
-            fillColor: '#ffff00',
-            fillOpacity: 1,
-            strokeWeight: 5,
-            clickable: false,
-            editable: true,
-            zIndex: 1
-          }
+		  markerOptions: {
+			draggable: true,
+		  },
+		  polygonOptions: {
+			editable: true,
+			draggable: true,
+		  },
+		  polylineOptions: {
+			editable: true,
+			draggable: true,
+		  }
         });
         drawingManager.setMap(map);
       }
