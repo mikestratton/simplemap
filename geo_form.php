@@ -7,11 +7,10 @@ if(isset($_POST['geofield1'])) {
     }
     else {
         echo "$ret bytes written to file <br />";
-        echo "View the data here: <a href=\"create_json_file.php\">Sucessfully Saved Map</a>";
+	$timestamp = date("YmdHis");
+	echo "View the data here: <a href=\"create_json_file.php?".$timestamp."\">geo_form.json</a>";
     }
 }
 else {
    die('no post data to process');
 }
-
-echo "<br /><br /><a href=\"create_json_file.php\">Last Map Saved Here</a>";

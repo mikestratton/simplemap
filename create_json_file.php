@@ -1,13 +1,7 @@
-<?php
-$getGeo = file_get_contents('maps/geo_form.json');
-?>
 <!DOCTYPE html>
-<!DOCTYPE html>
+<?php $timestamp = date("YmdHis");?>
 <html>
   <head>
-
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
-	<script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js"></script>
   
 	<style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style>
     <style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:black;text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}</style>
@@ -125,9 +119,7 @@ $getGeo = file_get_contents('maps/geo_form.json');
             <input type="submit" name="submit" value="Save GeoJSON">
           </form>
         </div>
-        <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;">
-            <?php echo $getGeo; ?>
-        </textarea>
+        <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
       </div>
     </div>
     <div id="map-container">
@@ -135,7 +127,21 @@ $getGeo = file_get_contents('maps/geo_form.json');
       <div id="drop-container" class=""></div>
     </div>
 
-
+	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
+	<script type='text/javascript'>
+		jsonURL = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;
+		$(window).load(function() {
+			$.ajax({
+				url : jsonURL,
+				dataType: "text",
+				success : function () {
+					map.data.loadGeoJson(jsonURL);
+				}
+			});
+		});
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing?t=<?php echo $timestamp; ?>"></script>
+	<script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js?t=<?php echo $timestamp; ?>"></script>
 
  </body>
 </html>
