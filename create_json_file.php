@@ -14,6 +14,13 @@
     <title>Simple GeoJSON Editor</title>
     <link href="style.css" title="compact" rel="stylesheet" type="text/css">
     <style type="text/css">
+	  .input-form {
+        position: fixed;
+        background: white;
+        z-index: 5000;
+        top: 0;
+        right: 0;
+      }
       html,
       body {
       height: 100%;
@@ -101,12 +108,20 @@
       #geojson-input.invalid {
       background-color: #FAC6C0;
       }
-    </style>
-	   
+
+    </style>   
   </head>
 
   <body>
-
+    <label for="deleteMessage">Rightclick to delete a feature</label>
+	<form class="input-form" id="input-form">
+		<p><table border="0">
+			<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
+			<tr><td>Longitude:</td><td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td></tr>
+			<tr><td>Zoom Level:</td><td><input type="text" name="zoom" id="zoom-input" value="18" /></td></tr>
+		</table></p>
+		<p><input type="submit" /></p>
+	</form>
     <div id="panel">
       <div id="panel-content">
         <div id="panel-title">Simple GeoJSON Editor</div>
@@ -128,7 +143,21 @@
     </div>
 
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
-	<script type='text/javascript'>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
+	<script src="geoeditor.js?t=<?php echo $timestamp; ?>" type="text/javascript"></script>
+
+    <script type='text/javascript'>
+		document.getElementById('input-form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			lat = parseFloat(document.getElementById('lat-input').value);
+			lon = parseFloat(document.getElementById('lon-input').value);
+			zoom = parseFloat(document.getElementById('zoom-input').value);
+			var point = new google.maps.LatLng(lat, lon);
+			map.setCenter(point);
+			map.setZoom(zoom);
+			return true; // do not submit form
+		}, true);
+
 		jsonURL = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;
 		$(window).load(function() {
 			$.ajax({
@@ -140,8 +169,5 @@
 			});
 		});
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing?t=<?php echo $timestamp; ?>"></script>
-	<script src="https://google-developers.appspot.com/maps/documentation/utils/geojson/editor.js?t=<?php echo $timestamp; ?>"></script>
-
  </body>
 </html>
