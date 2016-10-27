@@ -13,11 +13,11 @@
         $('#opacity').slider({ 
         min: 0, 
         max: 1, 
-        step: 0.01, 
+        step: 0.1, 
         value: 1,
         orientation: "horizontal",
              slide: function(e,ui){
-                     $('#box1').css('opacity', ui.value)
+                     $('#edit').css('opacity', ui.value)
 
              }                
         })
@@ -30,7 +30,7 @@
         value: 1,
         orientation: "horizontal",
              slide: function(e,ui){
-                     $('#box2').rotate(ui.value)
+                     $('#img').rotate(ui.value)
 
              }                
         })
@@ -38,12 +38,12 @@
 		//slider for height
         $('#height').slider({ 
         min: 0, 
-        max: 1000, 
-        step: 0.01, 
+        max: 1500, 
+        step: 0.1, 
         value: 1,
         orientation: "horizontal",
              slide: function(e,ui){
-                     $('#box3').css('height', ui.value)
+                     $('#img').css('height', ui.value)
 
              }                
         })
@@ -51,12 +51,12 @@
 		//slider for width
         $('#width').slider({ 
         min: 0, 
-        max: 1000, 
-        step: 0.01, 
+        max: 1500, 
+        step: 0.1, 
         value: 1,
         orientation: "horizontal",
              slide: function(e,ui){
-                     $('#box3').css('width', ui.value)
+                     $('#img').css('width', ui.value)
 
              }                
         })
@@ -65,44 +65,40 @@
 </script>
     <style type="text/css">
 		body { margin: 10px 32px;}
-		label { float:left; margin: 0px 12px; text-align: center; }
-		#box1 { width: auto; }
-		#box2 { width: auto; }
-		#box3 { width: auto; height: auto; margin:10px;}
-		#opacity { width: 200px; float :left; }
-		#rotate {  width: 200px; }
-		#height {  width: 200px; }
-		#width {  width: 200px; }
-		.container {min-height: 400px;}
+		
+		label { float:left; text-align: center; }
+		#edit { width:auto; min-height:400px; }
+		#opacity { width: 200px; margin:14px; }
+		#rotate {  width: 200px; margin:14px; }
+		#height {  width: 200px; margin:14px; }
+		#width {  width: 200px; margin:14px; }
+		#controls { background:skyblue; float:left; margin:25px 30px; float:left; padding:10px; border:medium blue solid;}
+		#output { width:auto; float:left; padding:10px;  }
 		.slabel {font-size: 12px; font-weight:500; color:white; }
 		.slide-bg { background:blue; color:navy; text-align:center; }
 		
 	</style>
 </head>
 <body>
-<h1>jQuery Image editing: transparency, rotate, resize</h1>
+<div class="container">
+<h1>jQuery image editing: transparency, rotate, resize</h1>
 <hr>
-<h2>Slider for opacity</h2>
+	 <div id="controls">
+		
+		 <div id="opacity" class="slide-bg" data-wjs-element="edit"><span class="slabel">OPACITY</span></div>
+		 <div id="rotate" class="slide-bg" data-wjs-element="edit"><span class="slabel">ROTATE</span></div>
+		 <div id="height" class="slide-bg" data-wjs-element="hw"><span class="slabel">HEIGHT</span></div>
+		 <div id="width" class="slide-bg" data-wjs-element="hw"><span class="slabel">WIDTH</span></div>
+	</div>
+	<div id="output">
+		
+		<div id="edit">
+			<p><img id="img" src="barn.jpg"></p>
+		</div>
+	</div>
 	
-     <div id="opacity" class="slide-bg" data-wjs-element="box1"><span class="slabel">OPACITY</span></div>
-	<div>&nbsp;</div>
-    <div id="box1">
-        <p><img src="barn.jpg"></p>
-    </div>
-	<hr>
-<h2>Rotate Image</h2>
 
-    <div id="rotate" class="slide-bg" data-wjs-element="box2"><span class="slabel">ROTATE</span></div>
-    <div>
-        <p><img id="box2" src="barn.jpg"></p>
-	</div>
-<hr>
 
-<h2>Image Height/Width</h2>
-<div id="height" class="slide-bg" data-wjs-element="box3"><span class="slabel">HEIGHT</span></div>
-<div id="width" class="slide-bg" data-wjs-element="box3"><span class="slabel">WIDTH</span></div>
-    <div class="container">
-        <p><img id="box3" src="barn.jpg"></p>
-	</div>
+</div>
 </body>
 </html>
