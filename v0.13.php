@@ -43,7 +43,7 @@
       }
       /* Map styles. */
       #map-container {
-      width: 64.9%;
+      width: 74.9%;
       height: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -72,8 +72,9 @@
       /* Panel styles. */
       #panel {
       float: left;
-      width: 35%;
-      height: 100%;
+      width: 25%;
+	  min-width: 300px;
+      height: 200px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       outline: 1px solid rgba(0, 0, 0, 0.2);
       z-index: 100;
