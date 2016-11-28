@@ -121,11 +121,18 @@
   <body>
 	<form class="input-form" id="input-form">
 		<p><table border="0">
-			<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
-			<tr><td>Longitude:</td><td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td></tr>
-			<tr><td>Zoom Level:</td><td><input type="text" name="zoom" id="zoom-input" value="18" /></td></tr>
-		</table></p>
-		<p><input type="submit" /></p>
+				<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
+				<tr><td>Longitude:</td><td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td></tr>
+				<tr><td>Zoom Level:</td><td><input type="text" name="zoom" id="zoom-input" value="18" /></td></tr>
+				<tr><td>&nbsp;</td>
+					<td style="text-align:right; padding:4px 12px">
+					<input type="submit" value="Center Map" />
+					</td>
+				</tr>
+			</table>
+			
+		</p>
+		
 	</form>	
     <div id="panel">
       <div id="panel-content">
