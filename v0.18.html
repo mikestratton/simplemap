@@ -3,23 +3,149 @@
     <title>Version v0.18.php Instructions </title>
  
 <style type="text/css">
-img {
-	width:95%;
-}
+	html, body, #map-canvas {
+        height: 400px;
+        margin: 0px;
+        padding: 20px
+    }
+    .overlay{
+        background:yellow;
+        padding:30px;
+        border:4px double black;
+    }
+	  
 </style>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
+
+<!-- Drag Image On Map -->
+<script type="text/javascript">
+function initialize() {
+  var mapOptions = {
+    zoom: 16,
+    center: new google.maps.LatLng(52.5498783, 13.425209099999961),
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+   
+ 
+  overlay = new DraggableOverlay(map,
+                                 map.getCenter(),
+                                 '<div class="overlay">drag me!</div>'
+            );
+  
+  
+}
+DraggableOverlay.prototype = new google.maps.OverlayView();
+
+DraggableOverlay.prototype.onAdd = function() {
+  var container=document.createElement('div'),
+      that=this;
+  
+  if(typeof this.get('content').nodeName!=='undefined'){
+    container.appendChild(this.get('content'));
+  }
+  else{
+    if(typeof this.get('content')==='string'){
+      container.innerHTML=this.get('content');
+    }
+    else{
+      return;
+    }
+  }
+  container.style.position='absolute';
+  container.draggable=true;
+      google.maps.event.addDomListener(this.get('map').getDiv(),
+                                       'mouseleave',
+                                        function(){
+          google.maps.event.trigger(container,'mouseup');
+        }
+      );
+      
+  
+      google.maps.event.addDomListener(container,
+                                       'mousedown',
+                                   function(e){
+        this.style.cursor='move';
+        that.map.set('draggable',false);
+        that.set('origin',e);
+
+        that.moveHandler  = google.maps.event.addDomListener(that.get('map').getDiv(),
+                                                             'mousemove',
+                                                             function(e){
+          var origin = that.get('origin'),
+              left   = origin.clientX-e.clientX,
+              top    = origin.clientY-e.clientY,
+              pos    = that.getProjection()
+                        .fromLatLngToDivPixel(that.get('position')),
+              latLng = that.getProjection()
+                        .fromDivPixelToLatLng(new google.maps.Point(pos.x-left,
+                                                                    pos.y-top));
+              that.set('origin',e);
+              that.set('position',latLng);
+              that.draw();
+          });
+    
+    
+        }
+     );
+      
+      google.maps.event.addDomListener(container,'mouseup',function(){
+        that.map.set('draggable',true);
+        this.style.cursor='default';
+        google.maps.event.removeListener(that.moveHandler);
+      });
+       
+  
+  this.set('container',container)
+  this.getPanes().floatPane.appendChild(container);
+};
+
+function DraggableOverlay(map,position,content){
+  if(typeof draw==='function'){
+    this.draw=draw;
+  }
+  this.setValues({
+                 position:position,
+                 container:null,
+                 content:content,
+                 map:map
+                 });
+}
+
+
+
+DraggableOverlay.prototype.draw = function() {
+  var pos = this.getProjection().fromLatLngToDivPixel(this.get('position'));
+  this.get('container').style.left = pos.x + 'px';
+  this.get('container').style.top = pos.y + 'px';
+};
+
+DraggableOverlay.prototype.onRemove = function() {
+  this.get('container').parentNode.removeChild(this.get('container'));
+  this.set('container',null)
+};
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 </head>
 
-<body style="margin:20px 40px">
-
+<body>
+<div>
 <h1>Instructions for Version 0.18</h1>
 <ul>
 <li>Any uploaded image must be draggaable.</li>
 <li>Expand on the file v0.17.php to add functionality.</li>
-<li>Here is a jsfiddle sample of what the finished result should be: 
-<a href="http://jsfiddle.net/mikestratton/a47shnsy/" target="blank">http://jsfiddle.net/mikestratton/a47shnsy/</a></li>
-<li>You can use the jsfiddle code as a base.</li>
+<li>Use the code in this html file to complete this.</li>
 </ul>
+</div>
 
+<div id="map-canvas"></div>
+
+	
 </body>
 
 </html>
