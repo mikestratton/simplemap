@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>TSSP Simple Map</title>
-   <link rel="stylesheet" href="style.css" type="text/css">
+   <link rel="stylesheet" href="styles/style.css" type="text/css">
 
 </head>
   <body style="margin:20px 40px">
