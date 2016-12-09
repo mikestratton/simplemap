@@ -24,10 +24,10 @@
 		
 		//slider for rotation  
 		$('#rotate').slider({ 
-        min: 0, 
-        max: 360, 
+        min: -180, 
+        max: 180, 
         step: 0.1, 
-        value: 1,
+        value: 0,
         orientation: "horizontal",
              slide: function(e,ui){
                      $('#img').rotate(ui.value)
