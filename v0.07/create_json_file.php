@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Simple GeoJSON Editor</title>
-    <link href="styles/style.css" title="compact" rel="stylesheet" type="text/css">
+    <link href="../styles/style.css" title="compact" rel="stylesheet" type="text/css">
     <style type="text/css">
       html,
       body {
