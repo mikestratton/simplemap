@@ -8,7 +8,7 @@ if(isset($_POST['geofield1'])) {
     else {
         echo "$ret bytes written to file <br />";
 	$timestamp = date("YmdHis");
-	echo "View the data here: <a href=\"v0.18.php?".$timestamp."\">geo_form.json</a>";
+	echo "View the data here: <a href=\"v0.21.php?".$timestamp."\">geo_form.json</a>";
     }
 }
 else {

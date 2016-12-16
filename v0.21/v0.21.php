@@ -202,7 +202,7 @@ if ($uploadOk == 0) {
 		<div class="container">
 			<div id="controls">
 				<h2>Upload Image</h2>
-				<form action="v0.18.php" method="post" enctype="multipart/form-data">
+				<form action="v0.21.php" method="post" enctype="multipart/form-data">
 					Select image to upload:<br>
 					<input type="file" name="fileToUpload" id="fileToUpload"><br>
 					<input type="submit" value="Upload File" name="submit">
@@ -220,7 +220,7 @@ if ($uploadOk == 0) {
           <a id="download-link" href="data:;base64," download="geojson.json">
           <button>Download</button>
           </a>
-          <form action="v0.18_geo_form.php" method="POST" id="geoform">
+          <form action="v0.21_geo_form.php" method="POST" id="geoform">
             <input type="submit" name="submit" value="Save GeoJSON">
           </form>
         </div>
@@ -235,7 +235,7 @@ if ($uploadOk == 0) {
 
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
-	<script src="v0.18_geoeditor.js?t=<?php echo $timestamp; ?>" type="text/javascript"
+	<script src="v0.21_geoeditor.js?t=<?php echo $timestamp; ?>" type="text/javascript"
 		src_image="<?php echo $ret = ($target_file ==null) ? "NOIMAGE" : $target_file; ?>"></script>
 
     <script type='text/javascript'>
