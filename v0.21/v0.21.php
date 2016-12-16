@@ -136,8 +136,8 @@ if ($uploadOk == 0) {
       #panel {
       float: left;
       width: 25%;
-	  min-width: 300px;
-      height: 200px;
+	  min-width: 250px;
+ 
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       outline: 1px solid rgba(0, 0, 0, 0.2);
       z-index: 100;
@@ -182,6 +182,7 @@ if ($uploadOk == 0) {
   </head>
 
   <body>
+	
 	<form class="input-form" id="input-form">
 		<p><table border="0">
 				<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
@@ -196,24 +197,33 @@ if ($uploadOk == 0) {
 			
 		</p>
 		
+		<hr>
+		<p style="padding:0px 20px">
+		<input type="checkbox" name="image" value="Image"> Image Overlay<br>
+		<input type="checkbox" name="linestring" value="Linestring" checked="checked"> Property Boundary<br>
+		<input type="checkbox" name="geojson" value="GeoJSON" checked="checked"> Drawing Layer<br>
+		</p>
+	
 	</form>	
     <div id="panel">		
       <div id="panel-content">
 		<div class="container">
 			<div id="controls">
-				<h2>Upload Image</h2>
+				
+				<div id="opacity" class="slide-bg" data-wjs-element="edit"><span class="slabel">OPACITY</span></div>
+				<div id="rotate" class="slide-bg" data-wjs-element="edit"><span class="slabel">ROTATE</span></div>
+				<div id="height" class="slide-bg" data-wjs-element="hw"><span class="slabel">HEIGHT</span></div>
+				<div id="width" class="slide-bg" data-wjs-element="hw"><span class="slabel">WIDTH</span></div><br>
+			<h2>Upload Image</h2>
 				<form action="v0.21.php" method="post" enctype="multipart/form-data">
 					Select image to upload:<br>
 					<input type="file" name="fileToUpload" id="fileToUpload"><br>
 					<input type="submit" value="Upload File" name="submit">
 				</form><br>
-				<div id="opacity" class="slide-bg" data-wjs-element="edit"><span class="slabel">OPACITY</span></div>
-				<div id="rotate" class="slide-bg" data-wjs-element="edit"><span class="slabel">ROTATE</span></div>
-				<div id="height" class="slide-bg" data-wjs-element="hw"><span class="slabel">HEIGHT</span></div>
-				<div id="width" class="slide-bg" data-wjs-element="hw"><span class="slabel">WIDTH</span></div><br>
-			</div>
+				</div>
 			<div id="output"></div>
 		</div>
+		 
         <div id="panel-title">Simple GeoJSON Editor</div>
         <div id="geojson-controls">
           <button onclick="document.getElementById('geojson-input').select();">Select All</button>
@@ -223,6 +233,7 @@ if ($uploadOk == 0) {
           <form action="v0.21_geo_form.php" method="POST" id="geoform">
             <input type="submit" name="submit" value="Save GeoJSON">
           </form>
+		 
         </div>
         <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
       </div>
