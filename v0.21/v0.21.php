@@ -182,7 +182,7 @@ if ($uploadOk == 0) {
   </head>
 
   <body>
-	
+
 	<form class="input-form" id="input-form">
 		<p><table border="0">
 				<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
@@ -193,15 +193,13 @@ if ($uploadOk == 0) {
 					<input type="submit" value="Center Map" />
 					</td>
 				</tr>
-			</table>
-			
+			</table>			
 		</p>
-		
 		<hr>
 		<p style="padding:0px 20px">
-		<input type="checkbox" name="image" value="Image"> Image Overlay<br>
-		<input type="checkbox" name="linestring" value="Linestring" checked="checked"> Property Boundary<br>
-		<input type="checkbox" name="geojson" value="GeoJSON" checked="checked"> Drawing Layer<br>
+		<input type="checkbox" id="LAYER_LOAD_IMAGE" name="image" value="Image"> Image Overlay<br>
+		<input type="checkbox" id="LAYER_LINESTRING" name="linestring" value="Linestring" checked="checked"> Property Boundary<br>
+		<input type="checkbox" id="LAYER_DRAWN_JSON" name="geojson" value="GeoJSON" checked="checked"> Drawing Layer<br>
 		</p>
 	
 	</form>	
@@ -250,6 +248,10 @@ if ($uploadOk == 0) {
 		src_image="<?php echo $ret = ($target_file ==null) ? "NOIMAGE" : $target_file; ?>"></script>
 
     <script type='text/javascript'>
+
+		jsonUrl_LineString = 'linestring/property01.json?t='+<?php echo $timestamp; ?>;
+		jsonUrl_Drawn_Json = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;
+
 		document.getElementById('input-form').addEventListener('submit', function (e) {
 			e.preventDefault();
 			lat = parseFloat(document.getElementById('lat-input').value);
@@ -261,16 +263,83 @@ if ($uploadOk == 0) {
 			return true; // do not submit form
 		}, true);
 
-		jsonURL = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;
+		document.getElementById('LAYER_LOAD_IMAGE').addEventListener('click', function(e) {
+			if(document.getElementById('LAYER_LOAD_IMAGE').checked){
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						hidePicture(false);
+					}
+				});
+			}else{
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						map.data.forEach(function (feature) {
+							map.data.remove(feature);
+						});
+						if(document.getElementById('LAYER_DRAWN_JSON').checked) map.data.loadGeoJson(jsonUrl_Drawn_Json);
+						if(document.getElementById('LAYER_LINESTRING').checked) map.data.loadGeoJson(jsonUrl_LineString);
+						hidePicture(true);
+					}
+				});
+			}
+		});
+
+		document.getElementById('LAYER_LINESTRING').addEventListener('click', function(e) {
+			if(document.getElementById('LAYER_LINESTRING').checked){
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						map.data.loadGeoJson(jsonUrl_LineString);
+					}
+				});
+			}else{
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						map.data.forEach(function (feature) {
+							map.data.remove(feature);
+						});
+						if(document.getElementById('LAYER_DRAWN_JSON').checked) map.data.loadGeoJson(jsonUrl_Drawn_Json);
+						if(document.getElementById('LAYER_LINESTRING').checked) map.data.loadGeoJson(jsonUrl_LineString);
+					}
+				});
+			}
+		});
+
+		document.getElementById('LAYER_DRAWN_JSON').addEventListener('click', function(e) {
+			if(document.getElementById('LAYER_DRAWN_JSON').checked){
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						map.data.loadGeoJson(jsonUrl_Drawn_Json);
+					}
+				});
+			}else{
+				$.ajax({
+					dataType: "text",
+					success : function () {
+						map.data.forEach(function (feature) {
+							map.data.remove(feature);
+						});
+						if(document.getElementById('LAYER_DRAWN_JSON').checked) map.data.loadGeoJson(jsonUrl_Drawn_Json);
+						if(document.getElementById('LAYER_LINESTRING').checked) map.data.loadGeoJson(jsonUrl_LineString);
+					}
+				});
+			}
+		});
+
 		$(window).load(function() {
 			$.ajax({
-				url : jsonURL,
 				dataType: "text",
-				success : function () {
-					map.data.loadGeoJson(jsonURL);
+				success : function () {					
+					if(document.getElementById('LAYER_DRAWN_JSON').checked) map.data.loadGeoJson(jsonUrl_Drawn_Json);
+					if(document.getElementById('LAYER_LINESTRING').checked) map.data.loadGeoJson(jsonUrl_LineString);
 				}
 			});
 		});
 	</script>
  </body>
 </html>
+
