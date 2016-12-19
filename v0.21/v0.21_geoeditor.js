@@ -4,6 +4,7 @@ var panel;
 var geoJsonInput;
 var downloadLink;
 var selectedFeature = null;
+var img;
 
 var scripts = document.getElementsByTagName('script');
 var lastScript = scripts[scripts.length-1];
@@ -53,7 +54,7 @@ DraggableOverlay.prototype.onAdd = function() {
 	container.style.position = 'absolute';
 	that=this;
 
-	var img = document.createElement('img');
+	img = document.createElement('img');
 	img.src = this.image_;
 	img.style.width = '100%';
 	img.style.height = '100%';
@@ -141,6 +142,11 @@ DraggableOverlay.prototype.onAdd = function() {
 	$(img).css('width', 200);
 	$(img).css('height', 200);
 };
+
+function hidePicture(par){
+	if (par == true ) $(img).css('opacity', 0);
+	if (par == false) $(img).css('opacity', 1);
+}
 
 DraggableOverlay.prototype.draw = function() {
 	var pos = this.getProjection().fromLatLngToDivPixel(this.get('position'));
@@ -236,6 +242,10 @@ function deleteSelection(){
 	if (selectedFeature !== null){
 		map.data.remove(selectedFeature);
 	}
+}
+
+function clearGeoInputJson(){
+	geoJsonInput.value = "";
 }
 
 // Refresh different components from other components.
