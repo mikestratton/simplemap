@@ -77,7 +77,7 @@ if ($uploadOk == 0) {
 		</p>
 		<hr>
 		<p style="padding:0px 20px">
-		<input type="checkbox" id="LAYER_LOAD_IMAGE" name="image" value="Image"> Image Overlay<br>
+		<input type="checkbox" id="LAYER_LOAD_IMAGE" name="image" value="Image" checked="checked"> Image Overlay<br>
 		<input type="checkbox" id="LAYER_LINESTRING" name="linestring" value="Linestring" checked="checked"> Property Boundary<br>
 		<input type="checkbox" id="LAYER_DRAWN_JSON" name="geojson" value="GeoJSON" checked="checked"> Drawing Layer<br>
 		</p>
@@ -129,7 +129,7 @@ if ($uploadOk == 0) {
 
     <script type='text/javascript'>
 
-		jsonUrl_LineString = 'linestring/property01.json?t='+<?php echo $timestamp; ?>;
+		jsonUrl_LineString = 'linestring/property01.json';
 		jsonUrl_Drawn_Json = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;
 
 		document.getElementById('input-form').addEventListener('submit', function (e) {
