@@ -166,7 +166,7 @@ function init() {
 	map = new google.maps.Map(document.getElementById('map-holder'), {
 		zoom: 11,
 		center: {lat: 62.323907, lng: -150.109291},
-		//mapTypeId: 'satellite'
+		mapTypeId: 'satellite'
 	});
 
 	var bounds = new google.maps.LatLngBounds(
