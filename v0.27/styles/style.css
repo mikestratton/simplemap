@@ -1,0 +1,171 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+		
+#map { 
+	height: 100%; 
+	}
+
+body { 
+	margin: 10px 32px;
+	}
+
+label { 
+	float:left; 
+	text-align: center; 
+}
+
+#edit { 
+	width:auto; 
+	min-height:400px; 
+}
+
+#opacity { 
+	width: 200px; 
+	margin:14px; 
+}
+
+#rotate {  
+	width: 200px; 
+	margin:14px; 
+}
+
+#height {  
+	width: 200px; 
+	margin:14px; 
+}
+
+#width {  
+	width: 200px; 
+	margin:14px; 
+}
+
+#controls { 
+	background:skyblue; 
+	float:left; 
+	margin:25px 30px; 
+	float:left; 
+	padding:10px; 
+}
+
+#output { 
+	width:auto; 
+	float:left;
+	padding:10px;  
+ }
+
+.slabel {
+	font-size: 12px; 
+	font-weight:500; 
+	color:white; 
+}
+
+.slide-bg { 
+	background:blue; 
+	color:navy; 
+	text-align:center; 
+}
+
+#delete-button {
+	margin-top: 5px;
+	position: fixed;
+	z-index: 5000;
+	left: 55%;
+}
+
+#input-form {
+	position: fixed;
+	background: white;
+	z-index: 5000;
+	top: 0;
+	right: 0;
+}
+
+html,
+      body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      body {
+      font-family: "Arial", "Helvetica", sans-serif;
+      color: #222;
+      font-size: 13px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      overflow-y: hidden;
+      }
+      /* Map styles. */
+      #map-container {
+      width: 74.9%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      float: right;
+      z-index: 0;
+      }
+      #map-holder {
+      height: 100%;
+      width: 100%;
+      }
+      #drop-container {
+      display: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      top: 0px;
+      left: 0px;
+      /* padding: 20px;*/
+      background-color: rgba(100, 100, 100, 0.5);
+      }
+      #drop-container.visible {
+      display: block;
+      }
+      /* Panel styles. */
+      #panel {
+      float: left;
+      width: 25%;
+	  min-width: 250px;
+ 
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      outline: 1px solid rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      }
+      #panel-content {
+      padding: 8.5px;
+      }
+      #geojson-controls {
+      padding-bottom: 8px;
+      }
+      #geojson-input {
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      /* <=iOS4, <= Android  2.3 */
+      -moz-box-sizing: border-box;
+      /* FF1+ */
+      box-sizing: border-box;
+      /* Chrome, IE8, Opera, Safari 5.1*/
+      border: none;
+      resize: none;
+      background-color: #F1F1F1;
+      }
+      #panel-title {
+      font-size: 20px;
+      line-height: 24px;
+      color: #DD4B39;
+      }
+      .subtitle {
+      font-size: 16px;
+      color: #222222;
+      }
+      hr {
+      color: #ebebeb;
+      }
+	  
+#geojson-input {
+	background-color: #F1F1F1;
+}
+
+#geojson-input.invalid {
+  background-color: #FAC6C0;
+      }
