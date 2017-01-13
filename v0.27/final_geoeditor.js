@@ -147,6 +147,8 @@ DraggableOverlay.prototype.onAdd = function() {
 
 	$(img).css('width', 200);
 	$(img).css('height', 200);
+	/* @version 0.25 bugfix code below: upon uploading image opacity is 50% so user can see gmap features behind it */
+	$(img).css('opacity', 0.5);
 };
 
 function hidePicture(par){
