@@ -1,46 +1,53 @@
 <?php
 $target_dir = "uploads/";
-$target_file = ($_FILES["fileToUpload"]["name"]) ? $target_dir . basename($_FILES["fileToUpload"]["name"]) : null;
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-       // echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}
-// Check if file already exists
-if (file_exists($target_file)) {
-    //echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 50000000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats when image is provided
-if ($target_file != null){
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-		echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+$target_file = null;
+/* @version 0.28 bugfix code below: php undefined index notices */
+if (isset($_FILES["fileToUpload"])){
+	$imageFileName = (isset($_FILES["fileToUpload"]["name"])) ? $_FILES["fileToUpload"]["name"] : null;
+	$imageFileSize = (isset($_FILES["fileToUpload"]["size"])) ? $_FILES["fileToUpload"]["size"] : null;
+	$imageFileTmpName = (isset($_FILES["fileToUpload"]["tmp_name"])) ? $_FILES["fileToUpload"]["tmp_name"] : null;
+	$target_file = $target_dir . basename($imageFileName);
+	$uploadOk = 1;
+	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+	// Check if image file is a actual image or fake image
+	if(isset($_POST["submit"])) {
+		$check = getimagesize($imageFileTmpName);
+		if($check !== false) {
+			// echo "File is an image - " . $check["mime"] . ".";
+			$uploadOk = 1;
+		} else {
+			echo "File is not an image.";
+			$uploadOk = 0;
+		}
+	}
+	// Check if file already exists
+	if (file_exists($target_file)) {
+		//echo "Sorry, file already exists.";
 		$uploadOk = 0;
 	}
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    //echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } else {
-       // echo "Sorry, there was an error uploading your file.";
-    }
+	// Check file size
+	if ($imageFileSize > 50000000) {
+		echo "Sorry, your file is too large.";
+		$uploadOk = 0;
+	}
+	// Allow certain file formats when image is provided
+	if ($target_file != null){
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+			echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+			$uploadOk = 0;
+		}
+	}
+	// Check if $uploadOk is set to 0 by an error
+	if ($uploadOk == 0) {
+		//echo "Sorry, your file was not uploaded.";
+		// if everything is ok, try to upload file
+	} else {
+		if (move_uploaded_file($imageFileTmpName, $target_file)) {
+		//echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		} else {
+			// echo "Sorry, there was an error uploading your file.";
+		}
+	}
 }
 ?>
 
@@ -96,7 +103,10 @@ if ($uploadOk == 0) {
 				<form action="final.php" method="post" enctype="multipart/form-data">
 					Select image to upload:<br>
 					<input type="file" name="fileToUpload" id="fileToUpload"><br>
-					<input type="submit" value="Upload File" name="submit">
+					<!-- @version 0.27 bugfix code below: form to upload image little modifications -->
+					<input id="upload_image" type="submit" value="Upload File" name="submit">
+					<input type="hidden" name="clat" id="clatID" value="">
+					<input type="hidden" name="clng" id="clngID" value="">
 				</form><br>
 				</div>
 			<div id="output"></div>
@@ -124,10 +134,20 @@ if ($uploadOk == 0) {
 
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
+	<!-- @version 0.27 bugfix code below: passing coordinates data attributes in case page is reloaded upon user image upload attempt -->
 	<script src="final_geoeditor.js?t=<?php echo $timestamp; ?>" type="text/javascript"
-		src_image="<?php echo $ret = ($target_file ==null) ? "NOIMAGE" : $target_file; ?>"></script>
+		src_image="<?php echo $ret = ($target_file ==null) ? "NOIMAGE" : $target_file; ?>"
+		centerLat = "<?php if (isset($_POST['clat'])){ echo $_POST['clat'] ;}else{echo "DEFAULT_CENTER";} ?>"
+		centerLng = "<?php if (isset($_POST['clng'])){ echo $_POST['clng'] ;}else{echo "DEFAULT_CENTER";} ?>"
+	></script>
 
     <script type='text/javascript'>
+
+		/* @version 0.27 bugfix code below: event listener to get lat lng centered coordinates when user clicks on upload button */
+		document.getElementById('upload_image').addEventListener('click', function(e){
+			document.getElementById('clatID').setAttribute('value', map.getCenter().lat());
+			document.getElementById('clngID').setAttribute('value', map.getCenter().lng());
+		});
 
 		jsonUrl_LineString = 'linestring/property01.json';
 		jsonUrl_Drawn_Json = 'maps/geo_form.json?t='+<?php echo $timestamp; ?>;

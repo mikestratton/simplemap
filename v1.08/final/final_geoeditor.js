@@ -5,10 +5,16 @@ var geoJsonInput;
 var downloadLink;
 var selectedFeature = null;
 var img;
+/* @version 0.27 bugfix code below: reserved default lat lng as constants */
+var defaultLat = 62.323907;
+var defaultLng = -150.109291;
 
 var scripts = document.getElementsByTagName('script');
 var lastScript = scripts[scripts.length-1];
 var srcImage = lastScript.getAttribute('src_image');
+/* @version 0.27 bugfix code below: getting data attributes lat lng */
+var cLat = lastScript.getAttribute('centerLat');
+var cLng = lastScript.getAttribute('centerLng');
 
 function loadScript(url, completeCallback) {
 	var script = document.createElement('script'), done = false,
@@ -141,6 +147,8 @@ DraggableOverlay.prototype.onAdd = function() {
 
 	$(img).css('width', 200);
 	$(img).css('height', 200);
+	/* @version 0.25 bugfix code below: upon uploading image opacity is 50% so user can see gmap features behind it */
+	$(img).css('opacity', 0.5);
 };
 
 function hidePicture(par){
@@ -162,16 +170,18 @@ DraggableOverlay.prototype.onRemove = function() {
 
 function init() {
   
+	/*@version 0.27 bugfix code below: map is centered correctly in case lat lng were passed as data attributes */
+	initCenterLat = (cLat === "DEFAULT_CENTER") ? defaultLat : parseFloat(cLat);
+	initCenterLng = (cLng === "DEFAULT_CENTER") ? defaultLng : parseFloat(cLng);
 	// Initialise the map.
 	map = new google.maps.Map(document.getElementById('map-holder'), {
 		zoom: 11,
-		center: {lat: 62.323907, lng: -150.109291},
-		mapTypeId: 'satellite'
+		center: {
+			lat: initCenterLat,
+			lng: initCenterLng
+		}
+		//mapTypeId: 'satellite'
 	});
-
-	var bounds = new google.maps.LatLngBounds(
-		new google.maps.LatLng(62.281819, -150.287132),
-		new google.maps.LatLng(62.400471, -150.005608));
 
 	if (srcImage !== 'NOIMAGE'){
 		overlay = new DraggableOverlay(map, map.getCenter(), srcImage);
