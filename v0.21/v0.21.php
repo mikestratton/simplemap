@@ -1,4 +1,7 @@
 <?php
+$create_dir = "uploads/"; if (!file_exists($create_dir) || !is_dir($create_dir)) mkdir($create_dir, 0775);
+$create_dir = "maps/"; if (!file_exists($create_dir) || !is_dir($create_dir)) mkdir($create_dir, 0775);
+$create_dir = "linestring/"; if (!file_exists($create_dir) || !is_dir($create_dir)) mkdir($create_dir, 0775);
 $target_dir = "uploads/";
 $target_file = ($_FILES["fileToUpload"]["name"]) ? $target_dir . basename($_FILES["fileToUpload"]["name"]) : null;
 $uploadOk = 1;
