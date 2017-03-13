@@ -1,7 +1,7 @@
 html, body { height: 100%; margin: 0; padding: 0; }
 	
 button {
-	color:white;
+color:white;
 background:blue;
 padding:7px;
 border-radius: 10px;
@@ -50,9 +50,8 @@ label {
 
 #controls { 
 	background:skyblue; 
-	
-	margin:18px 22px; 
-	border: double navy thick;
+	margin:18px 10px; 
+	border: dashed navy thin;
 	border-radius: 20px;
 	padding:8px 16px; 
 }
@@ -107,12 +106,13 @@ html,
       color: #222;
       font-size: 13px;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      overflow-y: hidden;
+      overflow-y: auto;
+	  overflow-x:hidden;
 	  background:palegreen;
       }
       /* Map styles. */
       #map-container {
-      width: 74.9%;
+      width: 79.9%;
       height: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -141,8 +141,8 @@ html,
       /* Panel styles. */
       #panel {
       float: left;
-      width: 25%;
-	  min-width: 250px;
+      width: 20%;
+	  min-width: 100px;
       z-index: 100;
 	  
 	  
@@ -157,17 +157,20 @@ html,
 	  margin-right:30px;
       }
       #geojson-input {
-      width: 92%;
+      
 	  max-height: 200px;
+	  
+	  width:90%;
       -webkit-box-sizing: border-box;
       /* <=iOS4, <= Android  2.3 */
       -moz-box-sizing: border-box;
       /* FF1+ */
       box-sizing: border-box;
       /* Chrome, IE8, Opera, Safari 5.1*/
-      border: double skyblue thick;
+      border: dashed skyblue thin;
 	  border-radius: 20px;
-	  padding: 10px 20px;
+	 
+	  padding: 10px;
       resize: none;
       background-color: #F1F1F1;
 	  
@@ -189,8 +192,9 @@ html,
  background-color:navy;
  color:white;
  width:auto;
- margin: 10px 20px;
- border: double white thick;
+ margin: 7px;
+ padding:5px 7px;
+ border: white dashed thin;
  border-radius: 20px;
  text-align:center;
 }
