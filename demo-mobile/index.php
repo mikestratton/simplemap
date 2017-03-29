@@ -38,7 +38,22 @@
 	  </div>
 				</div>
 				<div class="col-md-3">
-				Column Two
+				<div id="controls">
+								<h2 style="color:white;text-align:center;background:navy;border:double thick white;padding:4px;">Image Controls</h2>
+				<div id="opacity" class="slide-bg" data-wjs-element="edit"><span class="slabel">OPACITY</span></div>
+				<div id="rotate" class="slide-bg" data-wjs-element="edit"><span class="slabel">ROTATE</span></div>
+				<div id="height" class="slide-bg" data-wjs-element="hw"><span class="slabel">HEIGHT</span></div>
+				<div id="width" class="slide-bg" data-wjs-element="hw"><span class="slabel">WIDTH</span></div><br>
+			
+				<form action="final.php" method="post" enctype="multipart/form-data">
+					
+					
+					<!-- @version 0.27 bugfix code below: form to upload image little modifications -->
+					<input id="upload_image" type="hidden"  name="submit">
+					<input type="hidden" name="clat" id="clatID" value="">
+					<input type="hidden" name="clng" id="clngID" value="">
+				</form>
+				</div>
 				</div>
 				<div class="col-md-3">
 				Column Three
@@ -95,22 +110,7 @@
       <div id="panel-content">
 		<div class="container">
 		
-			<div id="controls">
-								<h2 style="color:white;text-align:center;background:navy;border:double thick white;padding:4px;">Image Controls</h2>
-				<div id="opacity" class="slide-bg" data-wjs-element="edit"><span class="slabel">OPACITY</span></div>
-				<div id="rotate" class="slide-bg" data-wjs-element="edit"><span class="slabel">ROTATE</span></div>
-				<div id="height" class="slide-bg" data-wjs-element="hw"><span class="slabel">HEIGHT</span></div>
-				<div id="width" class="slide-bg" data-wjs-element="hw"><span class="slabel">WIDTH</span></div><br>
 			
-				<form action="final.php" method="post" enctype="multipart/form-data">
-					
-					
-					<!-- @version 0.27 bugfix code below: form to upload image little modifications -->
-					<input id="upload_image" type="hidden"  name="submit">
-					<input type="hidden" name="clat" id="clatID" value="">
-					<input type="hidden" name="clng" id="clngID" value="">
-				</form>
-				</div>
 			<div id="output"></div>
 		</div>
 		 
