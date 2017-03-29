@@ -77,7 +77,19 @@
     </div>
 				</div>
 				<div class="col-md-3">
-				Column Four
+					<form class="input-form" id="input-form">
+		<p><table border="0">
+				<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
+				<tr><td>Longitude:</td><td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td></tr>
+				<tr><td>Zoom Level:</td><td><input type="text" name="zoom" id="zoom-input" value="18" /></td></tr>
+				<tr><td>&nbsp;</td>
+					<td style="text-align:right; padding:3px 12px">
+					<input type="submit" value="Center Map" />
+					</td>
+				</tr>
+			</table>			
+		</p>	
+	</form>	
 				</div>
 			</div>
 			<div class="row">
@@ -111,19 +123,7 @@
   
   
 <a href="https://github.com/mikestratton/simplemap"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
-	<form class="input-form" id="input-form">
-		<p><table border="0">
-				<tr><td>Latitude:</td><td><input type="text" name="lat" id="lat-input" value="40.7116" /></td></tr>
-				<tr><td>Longitude:</td><td><input type="text" name="lon" id="lon-input" value="-74.0132" /></td></tr>
-				<tr><td>Zoom Level:</td><td><input type="text" name="zoom" id="zoom-input" value="18" /></td></tr>
-				<tr><td>&nbsp;</td>
-					<td style="text-align:right; padding:3px 12px">
-					<input type="submit" value="Center Map" />
-					</td>
-				</tr>
-			</table>			
-		</p>	
-	</form>	
+
     
     <div><button id="delete-button">Delete Selected GeoJSON</button></div>
     <div id="map-container">
