@@ -1,14 +1,12 @@
 html, body { height: 100%; margin: 0; padding: 0; }
 	
-button {
-color:white;
-background:blue;
-padding:7px;
-border-radius: 10px;
-}	
+
 button:hover {
 	color:navy;
 	background:skyblue;
+}
+textarea {
+	color:navy;
 }
 #map { 
 	height: 100%; 
@@ -19,7 +17,6 @@ body {
 	}
 
 label { 
-	float:left; 
 	text-align: center; 
 }
 
@@ -29,71 +26,92 @@ label {
 }
 
 #opacity { 
-	width: auto; 
+
 	margin:10px auto;  
 }
 
 #rotate {  
-	width: auto;  
+	
 	margin:10px auto; 
 }
 
 #height {  
-	width: auto; 
+
 	margin:10px auto; 
 }
 
 #width {  
-	width: auto; 
+
 	margin:10px auto; 
 }
 
 #controls { 
-	background:skyblue; 
-	margin:18px 10px; 
-	border: dashed navy thin;
-	border-radius: 20px;
-	padding:8px 16px; 
+background-color:navy;
+ color:white;
+ margin: 5px 10px;
+	padding:0 0 5px 0;
+ border: white dashed thin;
+ border-radius: 10px;
+ text-align:center;
 }
-
+#controls p {
+	padding: 10px 0 0 0;
+}
+#controls .row {
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+#controls .col-md-6 {
+	margin:3px 10px;
+	padding:0;
+	background: blue;
+	width: 45%;
+	text-align: center;
+}
 #output { 
 	width:auto; 
-	float:left;
-	padding:10px;  
+	padding:0;  
+	margin:0;
  }
 
 .slabel {
 	font-size: 12px; 
 	font-weight:500; 
-	color:white; 
+	color:wheat; 
+	text-align:center;
+	background: navy;
+	padding: 2px 7px;
+	
+	
 }
 
 .slide-bg { 
-	background:blue; 
 	color:navy; 
 	text-align:center; 
-	height: 14px;
+	
 }
 
 #delete-button {
 	margin-top: 5px;
 	position: fixed;
 	z-index: 5000;
-	left: 55%;
+	left: 250px;
 }
 
 #input-form {
-	position: fixed;
-	background: skyblue;
-	margin: 10px;
-	padding:10px 20px;
-	border: double navy thick;
-	border-radius: 20px;
-	z-index: 5000;
-	top: 0;
-	right: 0;
+background-color:navy;
+	color:white;
+ width:auto;
+ margin: 7px;
+ padding:5px 7px;
+ border: white dashed thin;
+ border-radius: 10px;
+ text-align:center;
 }
-
+#input-form input{
+	color:navy;
+}
 html,
       body {
       height: 100%;
@@ -112,12 +130,12 @@ html,
       }
       /* Map styles. */
       #map-container {
-      width: 74.9%;
+      width: 100%;
       height: 100%;
       margin-left: auto;
       margin-right: auto;
       position: relative;
-      float: right;
+      float: none;
       z-index: 0;
       }
       #map-holder {
@@ -140,53 +158,68 @@ html,
       }
       /* Panel styles. */
       #panel {
-      float: left;
-      width: 20%;
-	  min-width: 100px;
-      z-index: 100;
-	  
-	  
+		  background-color:navy;
+ color:white;
+ width:auto;
+ margin: 7px;
+ padding:5px 7px;
+ border: white dashed thin;
+ border-radius: 10px;
+ text-align:center;
       }
       #panel-content {
-      padding: 8.5px;
+      padding: 0 5px;
 	  
       }
       #geojson-controls {
       padding-right: 8px;
 	  text-align:right;
-	  margin-right:30px;
       }
+#geojson-controls button {
+	color:navy;
+}
       #geojson-input {
       
-	  max-height: 200px;
+	 height:40px;
 	  
-	  width:90%;
+	  width:100%;
       -webkit-box-sizing: border-box;
       /* <=iOS4, <= Android  2.3 */
       -moz-box-sizing: border-box;
       /* FF1+ */
       box-sizing: border-box;
       /* Chrome, IE8, Opera, Safari 5.1*/
-      border: dashed skyblue thin;
-	  border-radius: 20px;
+      
+	  
 	 
 	  padding: 10px;
-      resize: none;
-      background-color: #F1F1F1;
+      resize:none;
+      
+	  
 	  
       }
+/* do not group these rules */
+*::-webkit-input-placeholder {
+    color: navy;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: navy;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: navy;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: navy;
+}
     
       hr {
       color: #ebebeb;
       }
 	  
-#geojson-input {
-	background-color: #F1F1F1;
-}
 
-#geojson-input.invalid {
-  background-color: #FAC6C0;
-      }
 
 .logo {
  background-color:navy;
@@ -195,7 +228,7 @@ html,
  margin: 7px;
  padding:5px 7px;
  border: white dashed thin;
- border-radius: 20px;
+ border-radius: 10px;
  text-align:center;
 }
 .logo a {
