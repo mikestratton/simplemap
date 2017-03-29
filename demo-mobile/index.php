@@ -56,7 +56,25 @@
 				</div>
 				</div>
 				<div class="col-md-3">
-				Column Three
+				<div id="panel">		
+      <div id="panel-content">
+		<div class="container">
+		
+			
+			<div id="output"></div>
+		</div>
+		 
+        
+        
+        <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
+      <div id="geojson-controls">
+          <button onclick="document.getElementById('geojson-input').select();">Select All</button>
+          <a id="download-link" href="data:;base64," download="geojson.json">
+          <button>Download</button>
+          </a>
+        </div>
+		</div>
+    </div>
 				</div>
 				<div class="col-md-3">
 				Column Four
@@ -106,25 +124,7 @@
 			</table>			
 		</p>	
 	</form>	
-    <div id="panel">		
-      <div id="panel-content">
-		<div class="container">
-		
-			
-			<div id="output"></div>
-		</div>
-		 
-        
-        
-        <textarea name="geofield1" form="geoform" id="geojson-input" placeholder="Drag and drop GeoJSON onto the map or paste it here to begin editing." style="height: 611.5px;"></textarea>
-      <div id="geojson-controls">
-          <button onclick="document.getElementById('geojson-input').select();">Select All</button>
-          <a id="download-link" href="data:;base64," download="geojson.json">
-          <button>Download</button>
-          </a>
-        </div>
-		</div>
-    </div>
+    
     <div><button id="delete-button">Delete Selected GeoJSON</button></div>
     <div id="map-container">
       <div id="map-holder" style="position: relative; overflow: hidden; background-color: rgb(229, 227, 223);"></div>
