@@ -77,7 +77,7 @@
     </div>
 
 	<script type='text/javascript' src='//code.jquery.com/jquery-1.11.0.js'></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs-xOsEgkg1mfUEDCVNQMnd-Fw2oEnADw&libraries=drawing"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0orZNfl9YDzECWHgespjXJ02EIobBOLg&libraries=drawing"></script>
 	<!-- @version 0.27 bugfix code below: passing coordinates data attributes in case page is reloaded upon user image upload attempt -->
 	<script src="final_geoeditor.js?t=<?php echo $timestamp; ?>" type="text/javascript"
 		src_image="uploads/pentagon.gif"
